@@ -1,3 +1,3 @@
-import { thisIsForEhudOnly } from "./ehud"
+import { thisIsForEhudOnly } from "./aaa"
 
 thisIsForEhudOnly("hh")
