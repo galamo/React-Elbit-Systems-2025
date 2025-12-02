@@ -1,12 +1,17 @@
-import jsonData from "./country.json";
+import data from "./country.json";
 
-type Country = Partial<typeof jsonData>;
+type UserType = typeof data;
 
-async function getCountry(): Promise<Country> {
-  const result = await fetch("");
-  const data = await result.json();
-  return data;
+type UserType2 = Omit<UserType, "gender" | "name">;
+
+enum GENDER {
+  FEMALE = "FEMALE",
+  MALE = "MALE",
+  OTHER = "OTHER",
 }
+// galamo
+type genderWithStringLiteral = "male" | "female" | "other";
 
-type Countries = Array<Country>;
-// type Countries = Country[];
+type UserType3 = UserType2 & { gender: GENDER };
+
+const t: UserType3 = { gender: GENDER.FEMALE };

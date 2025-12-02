@@ -1,8 +1,6 @@
-// main.ts - Demonstrates importing and using the exported modules
+import { ProductWithId } from "./product";
 
-console.log("🚀 TypeScript Exports - Live Example\n");
-console.log("=".repeat(50) + "\n");
-
+import type { ProductWithId } from "./product";
 // ============================================
 // EXAMPLE 1: Import default export
 // ============================================

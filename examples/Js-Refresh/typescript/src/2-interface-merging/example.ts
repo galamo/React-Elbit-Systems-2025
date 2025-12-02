@@ -1,8 +1,3 @@
-// Interface Merging Examples
-
-// Example 1: Basic Interface Merging
-console.log("=== Example 1: Basic Interface Merging ===\n");
-
 interface Product {
   title: string;
   price: number;
@@ -83,6 +78,17 @@ const calculator: Calculator = {
     }
   },
 };
+
+function loadFn(a: number, b: number): number
+function loadFn(a: string, b: string): string
+function loadFn(a: any, b: any) {
+  return;
+}
+
+function isAdmin(): boolean {
+  // if()
+  return true;
+}
 
 console.log("Add numbers:", calculator.add(5, 3));
 console.log("Add strings:", calculator.add("Hello ", "World"));

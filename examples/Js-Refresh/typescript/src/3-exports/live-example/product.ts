@@ -18,6 +18,8 @@ export const PRODUCT_CATEGORIES = [
 
 export type ProductCategory = (typeof PRODUCT_CATEGORIES)[number];
 
+export type ProductWithId = {};
+
 // Default export - main function
 export default function createProduct(
   title: string,

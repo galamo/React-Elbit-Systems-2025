@@ -124,4 +124,4 @@ function add(a: number | Array<number>, b: number | Array<number>): number {
 }
 
 add(1, 3);
-add([33], [1]);
+add([3], [1]);
