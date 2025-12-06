@@ -11,3 +11,8 @@ const company2 = {
   revenue: 5000000,
   industry: "Healthcare",
 };
+
+function mergeGenericObjects<T, K>(obj1: T, obj2: K): T & K {
+  return { ...obj1, ...obj2 };
+}
+

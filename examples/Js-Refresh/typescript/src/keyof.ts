@@ -4,6 +4,7 @@ type ScanResult = {
   priorities: Array<string>;
   id: string;
   userScannerId: string;
+  isHandled?: boolean;
 };
 const scanErrors: Array<ScanResult> = [
   {
@@ -24,18 +25,39 @@ const scanErrors: Array<ScanResult> = [
 
 type ScanResultKey = keyof Omit<ScanResult, "priorities" | "packages">;
 
+searchScan(scanErrors, "isHandled", true);
 function searchScan(
   data: Array<ScanResult>,
   key: ScanResultKey,
-  value: string | number
+  value: string | number | boolean
 ): Array<ScanResult> | undefined {
   if (!Array.isArray(data)) return;
   return data.filter((singleItem: ScanResult) => {
     if (typeof value === "number") {
       return singleItem[key] === value;
+    } else if (typeof value === "boolean") {
+      console.log(value);
     } else {
       return (singleItem[key] as string).toLowerCase() === value.toLowerCase();
     }
   });
 }
 searchScan(scanErrors, "userScannerId", "aa");
+
+type KeyValue<K extends ScanResultKey> = ScanResult[K];
+
+function searchScan2<K extends ScanResultKey>(
+  data: Array<ScanResult>,
+  key: K,
+  value: KeyValue<K>
+): Array<ScanResult> {
+  return data.filter((item) => {
+    const itemValue = item[key];
+
+    if (typeof value === "string" && typeof itemValue === "string") {
+      return itemValue.toLowerCase() === value.toLowerCase();
+    }
+
+    return itemValue === value;
+  });
+}

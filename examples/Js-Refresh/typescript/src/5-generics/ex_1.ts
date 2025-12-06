@@ -31,38 +31,40 @@ const users: User[] = [
   { type: "user", name: "Kate Müller", age: 23, occupation: "Astronaut" },
 ];
 
-export type ApiResponse<T> = unknown;
-
-type AdminsApiResponse =
+export type ApiResponse<T> =
   | {
       status: "success";
-      data: Admin[];
+      data: T[];
     }
   | {
       status: "error";
       error: string;
     };
 
-export function requestAdmins(callback: (response: AdminsApiResponse) => void) {
+export function requestAdmins(
+  callback: (response: ApiResponse<Admin>) => void
+) {
   callback({
     status: "success",
     data: admins,
   });
 }
 
-type UsersApiResponse =
-  | {
-      status: "success";
-      data: User[];
-    }
-  | {
-      status: "error";
-      error: string;
-    };
-
-export function requestUsers(callback: (response: UsersApiResponse) => void) {
+export function requestUsers(callback: (response: ApiResponse<User>) => void) {
   callback({
     status: "success",
     data: users,
   });
 }
+
+async function getPersons(): Promise<ApiResponse<Person>> {
+  const persons: Array<Person> = [];
+  return { data: persons, status: "success" };
+}
+
+async function main() {
+  type GetPersonsType = Awaited<ReturnType<typeof getPersons>>;
+  const result = await getPersons();
+}
+
+

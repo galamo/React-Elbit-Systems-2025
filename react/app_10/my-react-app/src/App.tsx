@@ -17,6 +17,7 @@ import { CircularProgress } from "@mui/material";
 import ExpensesPage from "./components/pages/expenses";
 import UseMemoAppExample from "./components/use-memo-app";
 import SettingsPage from "./components/pages/settings";
+import AsyncDemo from "./components/demo";
 const SuspenseLib = lazy(() => import("./components/suspensed-component"));
 
 function ProtectedRoute() {
@@ -99,6 +100,7 @@ export default function App() {
 
             <Route path="*" element={<h1>Not Found</h1>} />
           </Routes>
+          <AsyncDemo />
         </main>
       </div>
     </>

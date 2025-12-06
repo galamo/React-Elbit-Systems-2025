@@ -17,5 +17,10 @@ function saveCar(c: Car): CarApi {
   return { ...c, doors: c.doors || 4, idFromDb: id };
   // return 1;
 }
+type PartialCar = Partial<Car>;
+const c1: PartialCar = {
+  lp: "string",
+  color: "string",
+};
 
 // Use Required Function Example

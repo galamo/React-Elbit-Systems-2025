@@ -30,6 +30,7 @@ export default function AsyncDemo() {
     const value = e.target.value;
     setQuery(value); // urgent update
     startTransition(() => {
+       // non-urgent update (heavy list filtering)
       const result = filterData(value); // deferred update
       setFiltered(result);
     });
