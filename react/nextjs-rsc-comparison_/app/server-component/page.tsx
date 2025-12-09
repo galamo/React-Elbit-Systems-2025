@@ -179,4 +179,3 @@ export default async function ServerComponentPage() {
   );
 }
 
-// Made with Bob

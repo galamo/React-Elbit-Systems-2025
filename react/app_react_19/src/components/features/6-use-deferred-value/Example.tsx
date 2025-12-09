@@ -327,4 +327,3 @@ function SearchResults({ query }) {
   );
 }
 
-// Made with Bob

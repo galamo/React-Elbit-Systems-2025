@@ -318,4 +318,3 @@ export default function TraditionalSSRPage() {
   );
 }
 
-// Made with Bob

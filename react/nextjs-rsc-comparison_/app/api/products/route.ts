@@ -85,4 +85,3 @@ export async function GET() {
 // This API route is ONLY needed for the Traditional SSR approach
 // With React Server Components, you can fetch data directly in the component
 
-// Made with Bob
