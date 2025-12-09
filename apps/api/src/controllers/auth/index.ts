@@ -83,11 +83,11 @@ const router = express.Router();
 
 const User = z.object({
   userName: z.email().max(30),
-  password: z.string().min(4).max(20),
+  password: z.string().min(4).max(100),
 });
 const UserRegister = z.object({
   userName: z.email().max(30),
-  password: z.string().min(4).max(20),
+  password: z.string().min(4).max(100),
   age: z.number(),
   phone: z.string(),
 });

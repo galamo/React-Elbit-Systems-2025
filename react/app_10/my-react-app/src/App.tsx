@@ -100,7 +100,7 @@ export default function App() {
 
             <Route path="*" element={<h1>Not Found</h1>} />
           </Routes>
-          <AsyncDemo />
+          {/* <AsyncDemo /> */}
         </main>
       </div>
     </>

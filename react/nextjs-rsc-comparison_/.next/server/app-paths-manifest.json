@@ -1,0 +1,6 @@
+{
+  "/_not-found/page": "app/_not-found/page.js",
+  "/server-component/page": "app/server-component/page.js",
+  "/traditional-ssr/page": "app/traditional-ssr/page.js",
+  "/page": "app/page.js"
+}

@@ -4,7 +4,6 @@ import { HeaderApp } from "../../header-app";
 import data from "./dummyData.json";
 import css from "./countries.module.css";
 import { CountryCard } from "./card";
-import _ from "lodash";
 
 import {
   getCountriesApi,
@@ -26,7 +25,7 @@ export function CountriesPage() {
     setFilter(e.target.value);
   }
 
-  // Update time every second
+  // update time every second
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentTime(new Date());
@@ -35,63 +34,55 @@ export function CountriesPage() {
     return () => clearInterval(timer);
   }, []);
 
-  // Format date based on custom format
+  // Basic date formatter
   const formatDate = (date: Date, format: string) => {
     const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, '0');
-    const day = String(date.getDate()).padStart(2, '0');
-    
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+
     return format
-      .replace('YYYY', String(year))
-      .replace('MM', month)
-      .replace('DD', day);
+      .replace("YYYY", String(year))
+      .replace("MM", month)
+      .replace("DD", day);
   };
 
-  // Format time based on timezone setting
   const formatTime = (date: Date) => {
     const dateStr = formatDate(date, state.dateFormat);
     const timeStr = date.toLocaleTimeString();
-    
+
     if (state.timezone === "UTC") {
       const utcDate = new Date(date.toUTCString());
       const utcDateStr = formatDate(utcDate, state.dateFormat);
-      return `${utcDateStr} ${utcDate.toUTCString().split(' ')[4]} UTC`;
+      return `${utcDateStr} ${utcDate.toUTCString().split(" ")[4]} UTC`;
     } else {
       return `${dateStr} ${timeStr}`;
     }
   };
 
-  const handleSearchDebounce = _.debounce(handleFilter, 300);
+  // ❌ NO DEBOUNCE — runs on every keystroke
   useEffect(() => {
-    let submitState = true;
     async function getCountries() {
       try {
         setIsLoadingCountries(true);
+
         const result = !filter
           ? await getCountriesApi()
           : await getCountriesByNameApi(filter);
-        if (submitState) {
-          console.log(
-            `===== submitState = ${submitState} filter = ${filter} =====`
-          );
-          setCountries(result as Array<SingleCountry>);
-        }
-      } catch (ex: unknown) {
-        if (ex instanceof Error) {
-          console.log(ex.message);
-        }
+
+        // ❌ No race condition handling — responses can overwrite each other
+        console.log(
+          `RESPONSE ARRIVED for filter="${filter}" (may be out of order)`
+        );
+
+        setCountries(result as Array<SingleCountry>);
+      } catch (ex) {
+        if (ex instanceof Error) console.log(ex.message);
       } finally {
         setIsLoadingCountries(false);
       }
     }
+
     getCountries();
-    return () => {
-      submitState = false;
-      console.log(
-        `===== submitState = ${submitState} filter = ${filter} =====`
-      );
-      console.log("cleanup...filter?");
-    };
   }, [filter]);
 
   return (
@@ -103,11 +94,12 @@ export function CountriesPage() {
               setCounter(counter + 1);
             }}
           >
-            {" "}
-            Counter{" "}
+            Counter=
           </button>
-          <HeaderApp text={"Countries " + counter} />{" "}
+
+          <HeaderApp text={"Countries " + counter} />
         </div>
+
         <div
           style={{
             marginBottom: "10px",
@@ -116,11 +108,16 @@ export function CountriesPage() {
             borderRadius: "5px",
           }}
         >
-          <strong>Current Time ({state.timezone}):</strong> {formatTime(currentTime)}
+          <strong>Current Time ({state.timezone}):</strong>{" "}
+          {formatTime(currentTime)}
         </div>
-        <input type="text" onChange={handleSearchDebounce} />
+
+        {/* <-- no debounce */}
+        <input type="text" onChange={handleFilter} />
       </div>
-      {isLoadingCountries ? <h2> Loading... </h2> : null}
+
+      {isLoadingCountries ? <h2>Loading...</h2> : null}
+
       <div className={css.cardsWrapper}>
         {countries.map((item) => {
           return (

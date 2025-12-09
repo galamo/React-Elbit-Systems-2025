@@ -6,7 +6,11 @@ import css from "./countries.module.css";
 import { CountryCard } from "./card";
 import _ from "lodash";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks";
-import { fetchCountries, searchCountriesByName, setFilter } from "../../../store/slices/countriesSlice";
+import {
+  fetchCountries,
+  searchCountriesByName,
+  setFilter,
+} from "../../../store/slices/countriesSlice";
 
 export type SingleCountry = (typeof data)[0];
 
@@ -14,10 +18,12 @@ export function CountriesPage() {
   const [counter, setCounter] = useState<number>(0);
   const [currentTime, setCurrentTime] = useState(new Date());
   const [localFilter, setLocalFilter] = useState("");
-  
+
   const dispatch = useAppDispatch();
   const settings = useAppSelector((state) => state.settings);
-  const { countries, loading, filter } = useAppSelector((state) => state.countries);
+  const { countries, loading, filter } = useAppSelector(
+    (state) => state.countries
+  );
 
   function handleFilter(e: ChangeEvent<HTMLInputElement>) {
     const value = e.target.value;
@@ -36,24 +42,24 @@ export function CountriesPage() {
   // Format date based on custom format
   const formatDate = (date: Date, format: string) => {
     const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, '0');
-    const day = String(date.getDate()).padStart(2, '0');
-    
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+
     return format
-      .replace('YYYY', String(year))
-      .replace('MM', month)
-      .replace('DD', day);
+      .replace("YYYY", String(year))
+      .replace("MM", month)
+      .replace("DD", day);
   };
 
   // Format time based on timezone setting
   const formatTime = (date: Date) => {
     const dateStr = formatDate(date, settings.dateFormat);
     const timeStr = date.toLocaleTimeString();
-    
+
     if (settings.timezone === "UTC") {
       const utcDate = new Date(date.toUTCString());
       const utcDateStr = formatDate(utcDate, settings.dateFormat);
-      return `${utcDateStr} ${utcDate.toUTCString().split(' ')[4]} UTC`;
+      return `${utcDateStr} ${utcDate.toUTCString().split(" ")[4]} UTC`;
     } else {
       return `${dateStr} ${timeStr}`;
     }
@@ -107,7 +113,8 @@ export function CountriesPage() {
             borderRadius: "5px",
           }}
         >
-          <strong>Current Time ({settings.timezone}):</strong> {formatTime(currentTime)}
+          <strong>Current Time ({settings.timezone}):</strong>{" "}
+          {formatTime(currentTime)}
         </div>
         <input type="text" onChange={handleFilter} />
       </div>

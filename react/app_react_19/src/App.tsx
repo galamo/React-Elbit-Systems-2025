@@ -10,16 +10,16 @@ import UseFormStatusExample from "./components/features/3-use-form-status/Exampl
 import UseFormStatusExercise from "./components/features/3-use-form-status/Exercise";
 import UseFormStateExample from "./components/features/4-use-form-state/Example";
 import UseFormStateExercise from "./components/features/4-use-form-state/Exercise";
-import UseTransitionExample from "./components/features/5-use-transition/Example";
-import UseTransitionExercise from "./components/features/5-use-transition/Exercise";
-import DocumentMetadataExample from "./components/features/6-document-metadata/Example";
-import DocumentMetadataExercise from "./components/features/6-document-metadata/Exercise";
-import AssetLoadingExample from "./components/features/7-asset-loading/Example";
-import AssetLoadingExercise from "./components/features/7-asset-loading/Exercise";
-import RefAsPropExample from "./components/features/8-ref-as-prop/Example";
-import RefAsPropExercise from "./components/features/8-ref-as-prop/Exercise";
-import ContextProviderExample from "./components/features/9-context-provider/Example";
-import ContextProviderExercise from "./components/features/9-context-provider/Exercise";
+// import UseTransitionExample from "./components/features/5-use-transition/Example";
+// import UseTransitionExercise from "./components/features/5-use-transition/Exercise";
+// import DocumentMetadataExample from "./components/features/6-document-metadata/Example";
+// import DocumentMetadataExercise from "./components/features/6-document-metadata/Exercise";
+// import AssetLoadingExample from "./components/features/7-asset-loading/Example";
+// import AssetLoadingExercise from "./components/features/7-asset-loading/Exercise";
+// import RefAsPropExample from "./components/features/8-ref-as-prop/Example";
+// import RefAsPropExercise from "./components/features/8-ref-as-prop/Exercise";
+// import ContextProviderExample from "./components/features/9-context-provider/Example";
+// import ContextProviderExercise from "./components/features/9-context-provider/Exercise";
 
 function Home() {
   return (
@@ -159,45 +159,45 @@ function App() {
             />
 
             {/* useTransition */}
-            <Route path="/use-transition" element={<UseTransitionExample />} />
+            {/* <Route path="/use-transition" element={<UseTransitionExample />} />
             <Route
               path="/use-transition/exercise"
               element={<UseTransitionExercise />}
-            />
+            /> */}
 
             {/* Document Metadata */}
-            <Route
+            {/* <Route
               path="/document-metadata"
               element={<DocumentMetadataExample />}
             />
             <Route
               path="/document-metadata/exercise"
               element={<DocumentMetadataExercise />}
-            />
+            /> */}
 
             {/* Asset Loading */}
-            <Route path="/asset-loading" element={<AssetLoadingExample />} />
+            {/* <Route path="/asset-loading" element={<AssetLoadingExample />} />
             <Route
               path="/asset-loading/exercise"
               element={<AssetLoadingExercise />}
-            />
+            /> */}
 
             {/* ref as Prop */}
-            <Route path="/ref-as-prop" element={<RefAsPropExample />} />
+            {/* <Route path="/ref-as-prop" element={<RefAsPropExample />} />
             <Route
               path="/ref-as-prop/exercise"
               element={<RefAsPropExercise />}
-            />
+            /> */}
 
             {/* Context Provider */}
-            <Route
+            {/* <Route
               path="/context-provider"
               element={<ContextProviderExample />}
-            />
-            <Route
+            /> */}
+            {/* <Route
               path="/context-provider/exercise"
               element={<ContextProviderExercise />}
-            />
+            /> */}
           </Routes>
         </div>
       </div>
