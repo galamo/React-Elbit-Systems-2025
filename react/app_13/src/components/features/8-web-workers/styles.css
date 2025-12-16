@@ -1,0 +1,382 @@
+.web-workers-container {
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.web-workers-container h1 {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 2rem;
+}
+
+/* Explanation Box */
+.explanation-box {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 2rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.explanation-box h3 {
+  margin-top: 0;
+  font-size: 1.5rem;
+}
+
+.explanation-box ul {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+}
+
+.explanation-box li {
+  margin: 0.5rem 0;
+  line-height: 1.6;
+}
+
+/* Responsiveness Test */
+.responsiveness-test {
+  background: #f8f9fa;
+  padding: 2rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  border: 2px solid #e9ecef;
+}
+
+.responsiveness-test h3 {
+  margin-top: 0;
+  color: #495057;
+}
+
+.test-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  margin-top: 1.5rem;
+}
+
+.spinner {
+  font-size: 4rem;
+  transition: transform 0.016s linear;
+  will-change: transform;
+}
+
+.counter-display {
+  text-align: center;
+}
+
+.counter-display button {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-weight: 600;
+}
+
+.counter-display button:hover {
+  background: #0056b3;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
+}
+
+.counter-display button:active {
+  transform: translateY(0);
+}
+
+.hint {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: #6c757d;
+  font-style: italic;
+}
+
+/* Comparison Grid */
+.comparison-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 968px) {
+  .comparison-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.calculation-column {
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.calculation-column h2 {
+  margin-top: 0;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.main-thread {
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+  color: white;
+}
+
+.worker-thread {
+  background: linear-gradient(135deg, #51cf66 0%, #37b24d 100%);
+  color: white;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  backdrop-filter: blur(10px);
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.calc-button {
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  padding: 1rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.main-thread .calc-button {
+  color: #c92a2a;
+}
+
+.worker-thread .calc-button {
+  color: #2b8a3e;
+}
+
+.calc-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  background: white;
+}
+
+.calc-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.result-box {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  backdrop-filter: blur(10px);
+  min-height: 100px;
+}
+
+.result-box h4 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.result-box p {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+}
+
+.result-box .time {
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-top: 1rem;
+}
+
+.explanation {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1rem;
+  border-radius: 8px;
+  backdrop-filter: blur(10px);
+}
+
+.explanation h4 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+}
+
+.explanation ul {
+  margin: 0;
+  padding-left: 1.5rem;
+}
+
+.explanation li {
+  margin: 0.5rem 0;
+  line-height: 1.5;
+}
+
+/* Code Comparison */
+.code-comparison {
+  background: #f8f9fa;
+  padding: 2rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+}
+
+.code-comparison h3 {
+  margin-top: 0;
+  color: #495057;
+  text-align: center;
+}
+
+.code-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+@media (max-width: 968px) {
+  .code-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.code-block {
+  background: #2d3748;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.code-block h4 {
+  background: #1a202c;
+  color: white;
+  margin: 0;
+  padding: 1rem;
+  font-size: 1rem;
+}
+
+.code-block pre {
+  margin: 0;
+  padding: 1.5rem;
+  color: #e2e8f0;
+  font-family: "Courier New", monospace;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  overflow-x: auto;
+}
+
+/* Best Practices */
+.best-practices {
+  margin-bottom: 2rem;
+}
+
+.best-practices h3 {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 1.5rem;
+}
+
+.practices-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+@media (max-width: 968px) {
+  .practices-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.practice-card {
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.practice-card.good {
+  background: linear-gradient(135deg, #d4f1d4 0%, #c3e6cb 100%);
+  border: 2px solid #28a745;
+}
+
+.practice-card.bad {
+  background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%);
+  border: 2px solid #dc3545;
+}
+
+.practice-card h4 {
+  margin-top: 0;
+  font-size: 1.3rem;
+}
+
+.practice-card.good h4 {
+  color: #155724;
+}
+
+.practice-card.bad h4 {
+  color: #721c24;
+}
+
+.practice-card ul {
+  margin: 1rem 0 0 0;
+  padding-left: 1.5rem;
+}
+
+.practice-card li {
+  margin: 0.75rem 0;
+  line-height: 1.6;
+}
+
+.practice-card.good li {
+  color: #155724;
+}
+
+.practice-card.bad li {
+  color: #721c24;
+}
+
+/* Tips Box */
+.tips-box {
+  background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
+  padding: 2rem;
+  border-radius: 12px;
+  border: 2px solid #f39c12;
+}
+
+.tips-box h3 {
+  margin-top: 0;
+  color: #7d5a00;
+}
+
+.tips-box ul {
+  margin: 1rem 0 0 0;
+  padding-left: 1.5rem;
+}
+
+.tips-box li {
+  margin: 1rem 0;
+  line-height: 1.7;
+  color: #7d5a00;
+}
+
+.tips-box strong {
+  color: #5a3e00;
+}
+
+/* Made with Bob */

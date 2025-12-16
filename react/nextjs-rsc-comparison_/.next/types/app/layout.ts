@@ -1,4 +1,4 @@
-// File: /Users/galamouy/lectures/rfl-react-2025/react_19/nextjs-rsc-comparison_/app/layout.tsx
+// File: /Users/galamouy/lectures/React-Elbit-Systems-2025/react/nextjs-rsc-comparison_/app/layout.tsx
 import * as entry from '../../../app/layout.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

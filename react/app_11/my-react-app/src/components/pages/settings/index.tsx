@@ -1,12 +1,30 @@
 import { useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks";
-import { setTimezone, setDateFormat } from "../../../store/slices/settingsSlice";
+import {
+  setTimezone,
+  setDateFormat,
+} from "../../../store/slices/settingsSlice";
 import type { TimezoneType } from "../../../store/slices/settingsSlice";
 import styles from "./settings.module.css";
+import { shallowEqual } from "react-redux";
+import type { forEach } from "lodash";
 
 export default function SettingsPage() {
   const dispatch = useAppDispatch();
-  const settings = useAppSelector((state) => state.settings);
+  const dateFormat = useAppSelector((state) => state.settings.dateFormat);
+
+  // const expenseLimit = useAppSelector((state) => state.settings.expenseLimit);
+
+  // const timezone = useAppSelector((state) => state.settings.timezone);
+
+  // const data = useAppSelector((state) => {
+  //   return {
+  //     timezone: state.settings.timezone,
+  //     expenseLimit: state.settings.expenseLimit,
+  //     dateFormat: state.settings.dateFormat,
+  //   };
+  // }, shallowEqual);
+
   const [customFormat, setCustomFormat] = useState("");
   const [isCustom, setIsCustom] = useState(false);
 

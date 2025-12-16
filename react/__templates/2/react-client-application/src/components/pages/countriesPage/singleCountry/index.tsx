@@ -82,6 +82,7 @@ function AppDate(props: { currentDate: string }) {
   const settingsContext = useContext(SettingsContext);
   // REDUX STATE MANAGEMENT 
   const isLocaltime = useAppSelector(state => state.settingsSlice.isLocalTime)
+  const isLocaltime = useAppSelector(state => state.settingsSlice)
   return (
     <div>
       <h2>

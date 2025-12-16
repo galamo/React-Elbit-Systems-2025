@@ -61,28 +61,24 @@ export function CountriesPage() {
 
   // ❌ NO DEBOUNCE — runs on every keystroke
   useEffect(() => {
-    async function getCountries() {
-      try {
-        setIsLoadingCountries(true);
-
-        const result = !filter
-          ? await getCountriesApi()
-          : await getCountriesByNameApi(filter);
-
-        // ❌ No race condition handling — responses can overwrite each other
-        console.log(
-          `RESPONSE ARRIVED for filter="${filter}" (may be out of order)`
-        );
-
-        setCountries(result as Array<SingleCountry>);
-      } catch (ex) {
-        if (ex instanceof Error) console.log(ex.message);
-      } finally {
-        setIsLoadingCountries(false);
+    let isLatest = true;
+    console.log(`isLatest: ${isLatest}, filter: ${filter}`);
+    async function load() {
+      setIsLoadingCountries(true);
+      const result = !filter
+        ? await getCountriesApi()
+        : await getCountriesByNameApi(filter);
+      if (isLatest) {
+        console.log(`filter: ${filter}, setState`);
+        setCountries(result);
       }
+      setIsLoadingCountries(false);
     }
-
-    getCountries();
+    load();
+    return () => {
+      isLatest = false;
+      console.log(`isLatest: ${isLatest}, filter: ${filter}`);
+    };
   }, [filter]);
 
   return (

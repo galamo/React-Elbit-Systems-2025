@@ -552,7 +552,7 @@ interface Product {
 
 const ProductAnalytics: React.FC<{ products: Product[] }> = ({ products }) => {
   const [sortBy, setSortBy] = useState<"name" | "price">("name");
-
+  let user = {name::"gal"  } // change? recalculate memo. 
   // Expensive calculation memoized
   const analytics = useMemo(() => {
     console.log("Calculating analytics...");
@@ -1626,3 +1626,60 @@ export const useAppState = () => {
 
 ### Issue discussion - component subsciption.
 
+Suspense (fallback)
+Lazy
+Concurrent>>
+
+```javascript
+import { use, Suspense } from "react";
+
+// Create promise outside component
+const userPromise = fetch("/api/user/1").then((res) => res.json());
+
+function UserData() {
+  // use() suspends until promise resolves
+  const user = use(userPromise);
+
+  return (
+    <div>
+      <h3>{user.name}</h3>
+      <p>{user.email}</p>
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <UserData />
+    </Suspense>
+  );
+}
+
+function UserDataBeforeUseHook() {
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const userPromise = fetch("/api/user/1").then((res) => {
+      setUser(res.json());
+      setLoading(true)
+    });
+  }, []);
+
+  if(loading) return <div>Loading...</div>
+  return (
+    <div>
+      <h3>{user.name}</h3>
+      <p>{user.email}</p>
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <UserData />
+    </Suspense>
+  );
+}
+```

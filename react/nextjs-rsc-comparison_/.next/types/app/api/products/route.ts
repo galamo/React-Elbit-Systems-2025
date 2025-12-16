@@ -1,4 +1,4 @@
-// File: /Users/galamouy/lectures/rfl-react-2025/react_19/nextjs-rsc-comparison_/app/api/products/route.ts
+// File: /Users/galamouy/lectures/React-Elbit-Systems-2025/react/nextjs-rsc-comparison_/app/api/products/route.ts
 import * as entry from '../../../../../app/api/products/route.js'
 import type { NextRequest } from 'next/server.js'
 

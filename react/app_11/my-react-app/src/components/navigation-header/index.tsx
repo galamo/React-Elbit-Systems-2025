@@ -14,6 +14,7 @@ export default function NavigationHeader() {
     { name: "Register", path: "/register" },
     { name: "expenses", path: "/expenses" },
     { name: "Settings", path: "/settings" },
+    { name: "Suspense Component", path: "/suspensed-component" },
   ];
 
   const toggleMenu = () => setMenuOpen(!menuOpen);

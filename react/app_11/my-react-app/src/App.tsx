@@ -8,7 +8,6 @@ import NavigationHeader from "./components/navigation-header";
 import { CountryPage } from "./components/pages/country";
 import RegistrationPage from "./components/pages/register";
 import LoginPage from "./components/pages/login";
-import CountriesReportsPage from "./components/pages/reports";
 import UseLayoutEffectVsUseEffect from "./components/pages/useLayoutEffect";
 import UseRefRender from "./components/pages/useRefImpactRender";
 import Home from "./components/pages/home";
@@ -18,6 +17,7 @@ import ExpensesPage from "./components/pages/expenses";
 import UseMemoAppExample from "./components/use-memo-app";
 import SettingsPage from "./components/pages/settings";
 const SuspenseLib = lazy(() => import("./components/suspensed-component"));
+const CountriesReportsPage = lazy(() => import("./components/pages/reports"));
 
 function ProtectedRoute() {
   const token = localStorage.getItem("token");

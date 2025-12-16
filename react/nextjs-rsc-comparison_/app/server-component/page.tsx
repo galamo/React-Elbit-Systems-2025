@@ -4,6 +4,7 @@
 
 import styles from "./index.module.css";
 import "./index.css";
+import { useState } from "react";
 
 interface Product {
   id: number;
@@ -77,7 +78,7 @@ export default async function ServerComponentPage() {
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <h1>🟢 React Server Component</h1>
+        <h1>🟢 React Server Component ???</h1>
         <p className={styles.subtitle}>
           Direct server-side data fetching (React 19)
         </p>
@@ -178,4 +179,3 @@ export default async function ServerComponentPage() {
     </div>
   );
 }
-
